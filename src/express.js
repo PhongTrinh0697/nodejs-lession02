@@ -5,10 +5,12 @@ import bodyParser from "body-parser";
 const app = express();
 app.use(bodyParser.json());
 
+// get tasks
 app.get('/tasks', async(req, res) =>{
     res.json(tasks);
 });
 
+// create tasks
 app.post('/tasks', async(req, res) =>{
     const data = req.body;
     
@@ -19,6 +21,7 @@ app.post('/tasks', async(req, res) =>{
     res.json(data);
 });
 
+// find task by id
 app.get("/tasks/:id", async(req, res) =>{
     const params = req.params;
     const id = params.id;
@@ -30,6 +33,8 @@ app.get("/tasks/:id", async(req, res) =>{
    
 });
 
+
+// delete task by id
 app.delete("/tasks/:id", async(req, res) =>{
 
     const id = req.params.id;
